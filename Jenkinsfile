@@ -2,7 +2,11 @@
 
 pipeline {
     agent {
-        docker { image 'hrishioa/oyente' }
+        docker { 
+            image 'hrishioa/oyente' 
+            args '-v /product/project/customers/ABCCompany/:/ABCCompany -w /ABCCompany'
+            reuseNode true   
+               }
     }
     stages {
         stage('Test') {
