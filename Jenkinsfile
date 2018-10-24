@@ -3,7 +3,10 @@
 pipeline {
     agent {
         docker { image 'mythril/myth' }
-        args  '--entrypoint=\'\''
+                dockerfile {
+            args '--entrypoint=\'\''
+                }
+        }
     }
     stages {
         stage('Test') {
