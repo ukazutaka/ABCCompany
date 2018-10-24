@@ -2,12 +2,12 @@
 
 pipeline {
     agent {
-        docker { image 'node:7-alpine' }
+        docker { image 'hrishioa/oyente' }
     }
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
+                sh 'python --version'
             }
         }
     }
