@@ -4,14 +4,19 @@ pipeline {
     agent {
         docker { 
             image 'hrishioa/oyente' 
-            args '-v /product/project/customers/ABCCompany/:/ABCCompany -w /ABCCompany'
+            args '-v $CUSTOMERROOT/ABCCompany/:/ABCCompany $NFSROOT:/nfs -w /ABCCompany'
             reuseNode true   
                }
+    }
+    environment {
+        PATH = "/product/project/customers:$PATH"
+        CUSTOMERROOT = "/product/project/customers"
+        NFSROOT = "/nfs"
     }
     stages {
         stage('Test') {
             steps {
-                sh 'python oyente.py greeter.sol'
+                sh 'python $CUSTOMERROOT/ABCCompany/oyente.py $CUSTOMERROOT/ABCCompany/greeter.sol > /nfs/`date "+%Y%m%d_%H%M%S"`.json'
             }
         }
     }
