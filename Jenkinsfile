@@ -2,16 +2,14 @@
 
 pipeline {
     agent {
-        docker { image 'mythril/myth' }
-                dockerfile {
-            args '--entrypoint=\'\''
+        docker { image 'hrishioa/oyente' }
                 }
         }
     }
     stages {
         stage('Test') {
             steps {
-                sh 'myth --help'
+                sh 'python oyente.py greeter.sol'
             }
         }
     }
