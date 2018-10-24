@@ -3,12 +3,11 @@
 pipeline {
     agent {
         docker { image 'hrishioa/oyente' }
-        }
     }
     stages {
         stage('Test') {
             steps {
-                sh 'python oyente.py greeter.sol'
+                python 'oyente.py greeter.sol'
             }
         }
     }
