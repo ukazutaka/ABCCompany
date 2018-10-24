@@ -2,12 +2,12 @@
 
 pipeline {
     agent {
-        docker { image 'hrishioa/oyente' }
+        docker { image 'mythril/myth' }
     }
     stages {
         stage('Test') {
             steps {
-                sh 'python --version'
+                sh 'myth --help'
             }
         }
     }
