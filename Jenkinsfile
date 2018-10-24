@@ -3,7 +3,6 @@
 pipeline {
     agent {
         docker { image 'hrishioa/oyente' }
-                }
         }
     }
     stages {
