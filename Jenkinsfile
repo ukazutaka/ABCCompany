@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                python 'oyente.py greeter.sol'
+                sh 'python oyente.py greeter.sol'
             }
         }
     }
