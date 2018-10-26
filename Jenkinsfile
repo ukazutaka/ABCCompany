@@ -1,18 +1,19 @@
 #!/usr/bin/env groovy
 
 pipeline {
-    agent {
-        docker { 
-            image 'hrishioa/oyente' 
-            args '-v $CUSTOMERROOT/ABCCompany/:/ABCCompany $NFSROOT:/nfs -w /ABCCompany'
-            reuseNode true   
-               }
-    }
     environment {
         PATH = "/product/project/customers:$PATH"
         CUSTOMERROOT = "/product/project/customers"
         NFSROOT = "/nfs"
+    }    
+    agent {
+        docker { 
+            image 'hrishioa/oyente' 
+            args '-v $CUSTOMERROOT/ABCCompany/:/ABCCompany -w /ABCCompany'
+            reuseNode true   
+               }
     }
+
     stages {
         stage('Test') {
             steps {
